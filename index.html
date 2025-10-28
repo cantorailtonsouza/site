@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ailton Souza - Voz Premium do Sertanejo. Shows em GO, DF e Brasília">
+  <title>Ailton Souza - Voz Premium do Sertanejo</title>
+  <style>
+    :root {
+      --primary-color: #D4AF37;
+      --secondary-color: #4B0E15;
+      --dark-color: #1A1A1A;
+      --light-color: #F8F8F8;
+      --gray-color: #B3B3B3;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(180deg, var(--secondary-color) 0%, var(--dark-color) 100%);
+      color: var(--light-color);
+      text-align: center;
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+    
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .profile {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 4px solid var(--primary-color);
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+    
+    h1 {
+      font-size: 2rem;
+      color: var(--primary-color);
+      margin: 20px 0 10px;
+    }
+    
+    .subtitle {
+      color: var(--gray-color);
+      font-size: 1.1rem;
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+    
+    .link-btn {
+      display: block;
+      background-color: var(--primary-color);
+      color: var(--dark-color);
+      text-decoration: none;
+      padding: 16px;
+      border-radius: 50px;
+      margin: 12px 0;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .link-btn:hover {
+      background-color: #B8860B;
+      transform: translateY(-2px);
+    }
+    
+    footer {
+      margin-top: 40px;
+      color: var(--gray-color);
+      line-height: 1.6;
+    }
+
+    /* Efeitos responsivos */
+    @media (max-width: 480px) {
+      body { padding: 20px 15px; }
+      .profile { width: 150px; height: 150px; }
+      h1 { font-size: 1.7rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- SUBSTITUA pelo link da SUA foto -->
+    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cG9ydHJhaXQlMjBzaW5nZXJ8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="Ailton Souza" class="profile">
+    
+    <h1>Ailton Souza</h1>
+    <p class="subtitle">Voz Premium do Sertanejo 🎶<br>Shows exclusivos em GO | DF | Brasília</p>
+
+    <!-- SUBSTITUA pelos SEUS links -->
+    <a href="https://wa.me/5561999999999" class="link-btn">🎟️ Contrate Seu Show</a>
+    <a href="https://youtube.com/@ailtonsouza" class="link-btn">🎥 Canal no YouTube</a>
+    <a href="https://instagram.com/cantorailtonsouza" class="link-btn">📸 Instagram</a>
+    <a href="https://tiktok.com/@cantorailtonsouza" class="link-btn">🎬 TikTok</a>
+    <a href="https://open.spotify.com/artist/seulink" class="link-btn">🎧 Spotify</a>
+
+    <footer>
+      "Energia, emoção e autenticidade no palco."<br>
+      Sertanejo Moderno com Alma Raiz 🌾
+    </footer>
+  </div>
+</body>
+</html>
