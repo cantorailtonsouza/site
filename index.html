@@ -2,211 +2,178 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#080808">
-  <title>Toca Ailton Souza</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#070707">
+  <meta name="description" content="Peça sua música durante o show de Ailton Souza. Escolha uma playlist e envie o pedido pelo WhatsApp.">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Toca Ailton Souza — Peça sua música</title>
   <style>
-    :root{
-      --bg:#050505;--surface:#0f0f10;--surface2:#171719;--surface3:#202023;
-      --line:rgba(255,255,255,.10);--lineGold:rgba(213,175,78,.38);
-      --text:#fbfbfb;--muted:#aaa9ad;--gold:#d5af4e;--gold2:#f5db8a;
-      --green:#1faa59;--red:#bf4c4c;--shadow:0 24px 70px rgba(0,0,0,.45);
+    :root {
+      --bg: #050505;
+      --surface: #111113;
+      --surface-2: #18181b;
+      --line: rgba(255,255,255,.11);
+      --gold: #d5af4e;
+      --gold-light: #f4db8d;
+      --text: #fff;
+      --muted: #aaa9ad;
+      --green: #1fae5b;
+      --shadow: 0 24px 70px rgba(0,0,0,.45);
     }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;background:
-      radial-gradient(circle at 78% -5%,rgba(213,175,78,.18),transparent 25%),
-      radial-gradient(circle at 10% 35%,rgba(213,175,78,.05),transparent 25%),
-      linear-gradient(180deg,#030303,#0b0b0c 60%,#050505);
-      color:var(--text);font-family:Inter,Segoe UI,Arial,Helvetica,sans-serif;min-height:100vh
-    }
-    button,input,textarea{font:inherit}
-    button{cursor:pointer}
-    a{text-decoration:none;color:inherit}
-    .app{max-width:1180px;margin:auto;padding:18px 16px 80px}
-    .topbar{
-      position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;
-      align-items:center;gap:14px;padding:14px 0;background:rgba(5,5,5,.82);
-      backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.04)
-    }
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:58px;height:58px;display:grid;place-items:center;flex:0 0 auto}
-    .logo img{width:100%;height:100%;object-fit:contain;display:block}
-    .brand h1{font-size:clamp(20px,4vw,31px);margin:0;letter-spacing:-.03em}
-    .brand small{color:var(--muted)}
-    .nav{display:flex;gap:8px;flex-wrap:wrap}
-    .btn,.nav button{
-      border:1px solid var(--line);border-radius:13px;padding:11px 15px;
-      background:rgba(255,255,255,.045);color:white;transition:.22s ease
-    }
-    .btn.gold,.nav button.active{
-      background:linear-gradient(135deg,#b98c28,var(--gold2));
-      color:#111;border:none;font-weight:850;box-shadow:0 10px 30px rgba(213,175,78,.18)
-    }
-    .btn.green{background:var(--green);border:none;font-weight:800}
-    .btn.red{background:var(--red);border:none}
-    .btn.ghost{background:transparent}
-    .hero{
-      margin-top:18px;padding:clamp(28px,6vw,58px);border:1px solid var(--lineGold);border-radius:30px;
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      font-family: Inter, Segoe UI, Arial, sans-serif;
       background:
-      radial-gradient(circle at 88% 4%,rgba(245,219,138,.18),transparent 28%),
-      linear-gradient(135deg,rgba(20,20,21,.98),rgba(8,8,9,.98));
-      box-shadow:var(--shadow);position:relative;overflow:hidden
+        radial-gradient(circle at 80% 0%, rgba(213,175,78,.16), transparent 25%),
+        linear-gradient(180deg, #030303, #0b0b0c 58%, #050505);
     }
-
-    .hero-public{
-      min-height:520px;display:grid;grid-template-columns:minmax(0,1.08fr) minmax(300px,.92fr);
-      align-items:center;gap:10px;padding-right:0
+    button, input, textarea { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { cursor: pointer; }
+    a { color: inherit; text-decoration: none; }
+    .hidden { display: none !important; }
+    .app { width: min(1180px, 100%); margin: auto; padding: 0 16px 70px; }
+    .topbar {
+      position: sticky; top: 0; z-index: 20;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 13px 0;
+      background: rgba(5,5,5,.84);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,.05);
     }
-    .hero-content{position:relative;z-index:3;padding-right:20px}
-    .hero-content h2 span{
-      color:var(--gold2);
-      text-shadow:0 0 30px rgba(213,175,78,.18)
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .logo { width: 56px; height: 56px; flex: 0 0 auto; }
+    .logo img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .brand h1 { margin: 0; font-size: clamp(20px, 4vw, 30px); letter-spacing: -.035em; }
+    .brand small { color: var(--muted); }
+    .live-badge {
+      padding: 8px 11px; border-radius: 999px;
+      color: #9ce4b9; font-size: 12px; font-weight: 800;
+      border: 1px solid rgba(31,174,91,.38);
+      background: rgba(31,174,91,.11);
     }
-    .hero-highlights{
-      display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 20px
-    }
-    .hero-highlights span{
-      padding:9px 12px;border-radius:999px;border:1px solid var(--line);
-      background:rgba(255,255,255,.035);color:#d7d7da;font-size:13px
-    }
-    .hero-cta{padding:14px 20px}
-    .hero-photo-wrap{
-      position:relative;align-self:stretch;min-height:460px;overflow:hidden;
-      display:flex;align-items:flex-end;justify-content:center
-    }
-    .hero-photo-wrap:after{
-      content:"";position:absolute;inset:auto 0 0 0;height:28%;
-      background:linear-gradient(180deg,transparent,rgba(8,8,9,.98));z-index:2
-    }
-    .hero-photo{
-      position:absolute;right:-10px;bottom:-12px;height:108%;max-width:100%;
-      object-fit:contain;object-position:bottom center;z-index:1;
-      filter:drop-shadow(0 26px 34px rgba(0,0,0,.48))
-    }
-    .hero-glow{
-      position:absolute;width:330px;height:330px;border-radius:50%;
-      background:radial-gradient(circle,rgba(213,175,78,.24),rgba(213,175,78,.06) 43%,transparent 70%);
-      right:7%;top:12%;filter:blur(8px)
-    }
-    .eyebrow{
-      display:inline-block;color:var(--gold2);border:1px solid rgba(201,162,39,.45);
-      background:rgba(201,162,39,.12);padding:7px 11px;border-radius:999px;
-      font-size:12px;font-weight:800;letter-spacing:.08em
-    }
-    .hero h2{font-size:clamp(38px,7vw,76px);line-height:.95;margin:18px 0 12px;letter-spacing:-.055em}
-    .hero p{font-size:18px;color:var(--muted);max-width:700px}
-    .search{
-      width:100%;padding:16px;border:1px solid var(--line);border-radius:15px;
-      background:#0b0b0b;color:white;outline:none;margin-top:12px
-    }
-    .search:focus,input:focus,textarea:focus{border-color:var(--gold)}
-    .card{
-      margin-top:18px;background:linear-gradient(145deg,rgba(18,18,20,.98),rgba(10,10,11,.98));
-      border:1px solid var(--line);border-radius:24px;padding:clamp(18px,3vw,26px);
-      box-shadow:0 18px 45px rgba(0,0,0,.23)
-    }
-    .row{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-    .muted{color:var(--muted)}
-    .badge{
-      border-radius:999px;padding:7px 10px;background:rgba(31,170,89,.12);
-      border:1px solid rgba(31,170,89,.35);color:#8de2ae;font-size:13px
-    }
-    .music-list{display:grid;gap:10px;margin-top:15px}
-    .music{
-      display:flex;justify-content:space-between;align-items:center;gap:14px;
-      background:linear-gradient(135deg,#18181a,#111113);border:1px solid var(--line);
-      border-radius:17px;padding:16px;transition:.2s ease
-    }
-    .music-title{font-weight:900;letter-spacing:-.01em}
-    .music-artist{font-size:14px;color:var(--muted);margin-top:4px}
-    .music:hover{border-color:var(--lineGold);transform:translateY(-1px)}
-    .social-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:16px}
-    .social{
-      padding:17px;border-radius:18px;background:linear-gradient(145deg,var(--surface2),#101011);
-      border:1px solid var(--line);display:flex;align-items:center;gap:12px;font-weight:800;
-      transition:.25s ease
-    }
-    .social:hover{transform:translateY(-3px);border-color:var(--lineGold);box-shadow:0 14px 32px rgba(0,0,0,.28)}
-    .social-icon{width:26px;height:26px;display:block;flex:0 0 auto;color:var(--gold2)}
-    .social svg{width:100%;height:100%;fill:currentColor}
-    .hire{
+    .hero {
+      position: relative; overflow: hidden;
+      min-height: 500px; margin-top: 18px;
+      display: grid; grid-template-columns: minmax(0,1.05fr) minmax(300px,.95fr);
+      align-items: center;
+      border: 1px solid rgba(213,175,78,.38);
+      border-radius: 30px;
       background:
-      radial-gradient(circle at 92% 8%,rgba(245,219,138,.18),transparent 30%),
-      linear-gradient(135deg,#17130b,#0f0f10);
-      border-color:var(--lineGold)
+        radial-gradient(circle at 88% 5%, rgba(245,219,138,.19), transparent 28%),
+        linear-gradient(135deg, rgba(20,20,21,.99), rgba(8,8,9,.99));
+      box-shadow: var(--shadow);
     }
-    .hire h3{font-size:30px;margin:0 0 8px}
-    .phone{font-size:clamp(24px,5vw,40px);color:var(--gold2);font-weight:900;margin:8px 0 16px}
-    .footer{text-align:center;color:var(--muted);padding:26px 0 0}
-    .hidden{display:none!important}
-    .grid{display:grid;gap:16px}
-    .grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
-    .kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
-    .kpi{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:17px}
-    .kpi strong{display:block;color:var(--gold2);font-size:27px;margin-top:4px}
-    label{display:block;font-weight:800;margin:12px 0 7px}
-    input,textarea{
-      width:100%;padding:13px 14px;border-radius:12px;border:1px solid var(--line);
-      background:#0b0b0b;color:white;outline:none
+    .hero-content { position: relative; z-index: 3; padding: clamp(28px, 6vw, 58px); padding-right: 10px; }
+    .eyebrow {
+      display: inline-block; padding: 7px 11px; border-radius: 999px;
+      color: var(--gold-light); font-size: 12px; font-weight: 900; letter-spacing: .09em;
+      border: 1px solid rgba(213,175,78,.45); background: rgba(213,175,78,.11);
     }
-    textarea{min-height:95px;resize:vertical}
-    .playlist{
-      display:flex;align-items:center;justify-content:space-between;gap:12px;
-      background:var(--surface2);border:1px solid var(--line);border-radius:15px;padding:14px
+    .hero h2 { margin: 18px 0 12px; font-size: clamp(42px, 7vw, 76px); line-height: .95; letter-spacing: -.058em; }
+    .hero h2 span { color: var(--gold-light); text-shadow: 0 0 28px rgba(213,175,78,.18); }
+    .hero p { max-width: 650px; margin: 0; color: var(--muted); font-size: 18px; line-height: 1.55; }
+    .highlights { display: flex; flex-wrap: wrap; gap: 9px; margin: 22px 0; }
+    .highlights span { padding: 9px 12px; border-radius: 999px; color: #d6d6d9; font-size: 13px; border: 1px solid var(--line); background: rgba(255,255,255,.035); }
+    .hero-photo-wrap { position: relative; align-self: stretch; min-height: 500px; display: flex; align-items: flex-end; justify-content: center; }
+    .hero-photo-wrap::after { content: ""; position: absolute; z-index: 2; left: 0; right: 0; bottom: 0; height: 20%; background: linear-gradient(180deg, transparent, rgba(8,8,9,.97)); }
+    .hero-photo {
+      position: absolute; z-index: 1;
+      right: 1%; bottom: -2%;
+      height: 96%; max-width: 98%;
+      object-fit: contain; object-position: bottom center;
+      filter: drop-shadow(0 26px 34px rgba(0,0,0,.48));
     }
-    .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:9px}
-    .switch{position:relative;width:54px;height:30px;flex:0 0 auto}
-    .switch input{opacity:0;width:0;height:0}
-    .slider{position:absolute;inset:0;background:#555;border-radius:999px}
-    .slider:before{content:"";position:absolute;width:22px;height:22px;left:4px;top:4px;background:white;border-radius:50%;transition:.2s}
-    .switch input:checked+.slider{background:var(--green)}
-    .switch input:checked+.slider:before{transform:translateX(24px)}
-    .modal{position:fixed;inset:0;background:rgba(0,0,0,.76);z-index:50;display:grid;place-items:end center}
-    .modal-box{
-      width:min(720px,100%);max-height:92vh;overflow:auto;background:#101010;
-      border:1px solid var(--line);border-radius:24px 24px 0 0;padding:22px
+    .glow { position: absolute; width: 330px; height: 330px; right: 8%; top: 12%; border-radius: 50%; background: radial-gradient(circle, rgba(213,175,78,.23), rgba(213,175,78,.05) 45%, transparent 70%); filter: blur(8px); }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      min-height: 46px; padding: 12px 16px;
+      color: #fff; font-weight: 800;
+      border: 1px solid var(--line); border-radius: 13px;
+      background: rgba(255,255,255,.045);
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
     }
-    .modal-head{display:flex;justify-content:space-between;align-items:center}
-    .close{border:none;background:transparent;color:white;font-size:28px}
-    .notice{padding:14px;border-radius:14px;border:1px solid rgba(31,170,89,.35);background:rgba(31,170,89,.10)}
-    .support-values{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin-top:14px}
-    .support-values button{padding:14px;border-radius:12px;border:1px solid var(--line);background:#181818;color:white}
-    .support-values button.selected{background:var(--gold);color:#111;font-weight:800}
-
-
-    .section-kicker{
-      color:var(--gold2);font-size:11px;font-weight:900;letter-spacing:.16em
+    .btn:hover { transform: translateY(-2px); border-color: rgba(213,175,78,.45); }
+    .btn.gold { color: #111; border: 0; background: linear-gradient(135deg,#b98c28,var(--gold-light)); box-shadow: 0 10px 30px rgba(213,175,78,.18); }
+    .btn.green { border: 0; background: var(--green); }
+    .btn.full { width: 100%; }
+    .card {
+      margin-top: 18px; padding: clamp(18px, 3vw, 27px);
+      border: 1px solid var(--line); border-radius: 24px;
+      background: linear-gradient(145deg, rgba(18,18,20,.98), rgba(10,10,11,.98));
+      box-shadow: 0 18px 45px rgba(0,0,0,.22);
     }
-    .public-playlist:before{
-      content:"♪";width:46px;height:46px;border-radius:14px;
-      display:grid;place-items:center;flex:0 0 auto;
-      background:linear-gradient(135deg,#c99a35,#f2d982);color:#111;
-      font-size:22px;font-weight:900;box-shadow:0 10px 24px rgba(213,175,78,.14)
+    .row { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .section-kicker { color: var(--gold-light); font-size: 11px; font-weight: 900; letter-spacing: .16em; }
+    h3 { font-size: clamp(22px, 4vw, 30px); }
+    .muted { color: var(--muted); }
+    .badge { padding: 7px 10px; border-radius: 999px; color: #8de2ae; font-size: 13px; border: 1px solid rgba(31,174,91,.35); background: rgba(31,174,91,.1); }
+    .list { display: grid; gap: 11px; margin-top: 16px; }
+    .playlist {
+      width: 100%; display: flex; align-items: center; gap: 14px; text-align: left;
+      padding: 19px; color: #fff;
+      border: 1px solid var(--line); border-radius: 19px;
+      background: linear-gradient(135deg,#1a1a1c,#111113);
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
     }
-    .public-playlist > div{flex:1}
-    .public-playlist{
-      width:100%;display:flex;justify-content:space-between;align-items:center;gap:14px;
-      text-align:left;background:linear-gradient(135deg,#1a1a1c,#111113);
-      border:1px solid var(--line);border-radius:19px;padding:20px;color:white;
-      transition:.22s ease
+    .playlist:hover { transform: translateY(-2px); border-color: rgba(213,175,78,.42); box-shadow: 0 16px 36px rgba(0,0,0,.28); }
+    .playlist::before { content: "♪"; width: 46px; height: 46px; flex: 0 0 auto; display: grid; place-items: center; border-radius: 14px; color: #111; font-size: 22px; font-weight: 900; background: linear-gradient(135deg,#c99a35,#f2d982); }
+    .playlist-info { flex: 1; }
+    .playlist strong { font-size: 18px; }
+    .open-label { color: var(--gold-light); font-weight: 900; white-space: nowrap; }
+    .search, .field {
+      width: 100%; padding: 15px;
+      color: #fff; outline: none;
+      border: 1px solid var(--line); border-radius: 14px;
+      background: #0a0a0b;
     }
-    .public-playlist:hover{border-color:var(--lineGold);transform:translateY(-2px);box-shadow:0 16px 36px rgba(0,0,0,.30)}
-    .public-playlist strong{font-size:18px}
-    .public-playlist .count{color:var(--gold2);font-weight:800;white-space:nowrap}
-    @media(max-width:760px){
-      .topbar{align-items:flex-start;flex-direction:column}
-      .nav{display:grid;grid-template-columns:1fr 1fr;width:100%}
-      .hero-public{grid-template-columns:1fr;min-height:auto;padding:30px 24px 0}
-      .hero-content{padding-right:0}
-      .hero-photo-wrap{min-height:390px;margin-top:8px}
-      .hero-photo{height:108%;right:50%;transform:translateX(50%)}
-      .grid.two,.kpis{grid-template-columns:1fr}
-      .social-grid{grid-template-columns:1fr 1fr}
-      .music{align-items:flex-start;flex-direction:column}
-      .music .btn{width:100%}
-      .support-values{grid-template-columns:1fr 1fr}
+    .search { margin-top: 14px; }
+    .search:focus, .field:focus { border-color: var(--gold); }
+    .music {
+      display: flex; align-items: center; justify-content: space-between; gap: 14px;
+      padding: 16px;
+      border: 1px solid var(--line); border-radius: 17px;
+      background: linear-gradient(135deg,#18181a,#111113);
+    }
+    .music-title { font-weight: 900; }
+    .music-artist { margin-top: 4px; color: var(--muted); font-size: 14px; }
+    .social-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 12px; margin-top: 16px; }
+    .social { display: flex; align-items: center; gap: 11px; padding: 17px; font-weight: 800; border: 1px solid var(--line); border-radius: 18px; background: linear-gradient(145deg,var(--surface-2),#101011); transition: transform .2s ease, border-color .2s ease; }
+    .social:hover { transform: translateY(-3px); border-color: rgba(213,175,78,.42); }
+    .social svg { width: 25px; height: 25px; fill: var(--gold-light); flex: 0 0 auto; }
+    .hire { border-color: rgba(213,175,78,.38); background: radial-gradient(circle at 92% 8%,rgba(245,219,138,.17),transparent 30%), linear-gradient(135deg,#17130b,#0f0f10); }
+    .phone { margin: 8px 0 17px; color: var(--gold-light); font-size: clamp(25px,5vw,39px); font-weight: 900; }
+    footer { padding: 28px 0 0; text-align: center; color: var(--muted); font-size: 14px; }
+    .modal { position: fixed; inset: 0; z-index: 50; display: grid; place-items: end center; padding-top: 50px; background: rgba(0,0,0,.78); }
+    .modal-box { width: min(680px,100%); max-height: 92vh; overflow: auto; padding: 22px; border: 1px solid var(--line); border-radius: 24px 24px 0 0; background: #101011; }
+    .modal-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .close { border: 0; color: #fff; font-size: 30px; background: transparent; }
+    label { display: block; margin: 13px 0 7px; font-weight: 800; }
+    textarea.field { min-height: 90px; resize: vertical; }
+    .notice { margin: 12px 0; padding: 13px; border-radius: 13px; color: #c9f2d9; border: 1px solid rgba(31,174,91,.34); background: rgba(31,174,91,.09); }
+    .modal-actions { display: grid; gap: 10px; margin-top: 16px; }
+    @media (max-width: 760px) {
+      .app { padding-inline: 12px; }
+      .topbar { position: relative; }
+      .live-badge { display: none; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-content { padding: 30px 23px 4px; }
+      .hero-photo-wrap { min-height: 410px; }
+      .hero-photo { right: 50%; bottom: -1%; height: 92%; max-width: 100%; transform: translateX(50%); }
+      .social-grid { grid-template-columns: 1fr 1fr; }
+      .music { align-items: flex-start; flex-direction: column; }
+      .music .btn { width: 100%; }
+    }
+    @media (max-width: 420px) {
+      .brand small { font-size: 12px; }
+      .logo { width: 49px; height: 49px; }
+      .hero-photo-wrap { min-height: 370px; }
+      .social-grid { grid-template-columns: 1fr; }
+      .playlist { padding: 16px; }
     }
   </style>
 </head>
@@ -214,324 +181,221 @@
 <div class="app">
   <header class="topbar">
     <div class="brand">
-      <div class="logo"><img src="assets/logo-ailton-souza.png" alt="Logo Ailton Souza"></div>
+      <div class="logo"><img src="assets/logo-ailton-souza.png" alt="Logo de Ailton Souza"></div>
       <div><h1>Toca Ailton Souza</h1><small>Peça sua música favorita</small></div>
     </div>
-    <nav class="nav">
-      <button id="publicNav" class="active" onclick="showPage('public')">Página pública</button>
-      <button id="adminNav" onclick="showPage('admin')">Painel do cantor</button>
-    </nav>
+    <span class="live-badge">Pedido gratuito</span>
   </header>
 
-  <main id="publicPage">
-    <section class="hero hero-public">
+  <main>
+    <section class="hero">
       <div class="hero-content">
         <span class="eyebrow">TOCA AILTON SOUZA</span>
         <h2>Você escolhe.<br><span>Eu canto.</span></h2>
-        <p>Escolha uma playlist ativa, encontre sua música favorita e envie o pedido diretamente para o show.</p>
-        <div class="hero-highlights">
+        <p>Escolha uma playlist, encontre sua música favorita e envie o pedido diretamente para o show.</p>
+        <div class="highlights">
           <span>✓ Pedido gratuito</span>
           <span>✓ Envio pelo WhatsApp</span>
           <span>✓ Apoio sempre opcional</span>
         </div>
-        <button class="btn gold hero-cta" onclick="document.getElementById('publicPlaylistsSection').scrollIntoView({behavior:'smooth'})">Escolher uma playlist</button>
+        <button class="btn gold" type="button" onclick="document.getElementById('playlistsSection').scrollIntoView({behavior:'smooth'})">Escolher uma playlist</button>
       </div>
       <div class="hero-photo-wrap">
-        <div class="hero-glow"></div>
-        <img src="assets/ailton-souza-destaque.png" alt="Ailton Souza" class="hero-photo">
+        <div class="glow"></div>
+        <img src="assets/ailton-souza-destaque.png" alt="Cantor Ailton Souza" class="hero-photo">
       </div>
     </section>
 
-    <section class="card" id="publicPlaylistsSection">
+    <section class="card" id="playlistsSection">
       <div class="row">
         <div>
           <div class="section-kicker">PLAYLISTS DISPONÍVEIS</div>
-          <h3 style="margin:4px 0 0">O que você quer ouvir?</h3>
-          <div class="muted">Escolha uma das playlists liberadas para este show.</div>
+          <h3 style="margin:5px 0 4px">O que você quer ouvir?</h3>
+          <div class="muted">Escolha uma playlist liberada para este show.</div>
         </div>
         <span class="badge">Pedido gratuito</span>
       </div>
-      <div id="publicPlaylists" class="music-list"></div>
+      <div id="playlistList" class="list"></div>
     </section>
 
-    <section class="card hidden" id="publicSongsSection">
-      <div class="row">
-        <div>
-          <button class="btn ghost" onclick="backToPlaylists()">← Voltar às playlists</button>
-          <h3 id="playlistTitle" style="margin:12px 0 0"></h3>
-          <div id="playlistCount" class="muted"></div>
-        </div>
-      </div>
-      <input id="publicSearch" class="search" placeholder="Buscar música ou artista..." oninput="renderPublicSongs()">
-      <div id="publicSongs" class="music-list"></div>
+    <section class="card hidden" id="songsSection">
+      <button class="btn" type="button" onclick="backToPlaylists()">← Voltar às playlists</button>
+      <h3 id="playlistTitle" style="margin:16px 0 3px"></h3>
+      <div id="playlistCount" class="muted"></div>
+      <input id="searchInput" class="search" type="search" placeholder="Buscar música ou artista..." autocomplete="off" oninput="renderSongs()">
+      <div id="songsList" class="list"></div>
     </section>
 
     <section class="card">
-      <h3 style="margin-top:0">Acompanhe Ailton Souza</h3>
-      <p class="muted">Siga nas redes sociais e conheça mais do trabalho.</p>
+      <h3 style="margin:0 0 5px">Acompanhe Ailton Souza</h3>
+      <p class="muted" style="margin-top:0">Siga nas redes sociais e conheça mais do trabalho.</p>
       <div class="social-grid">
-        <a id="instagramLink" class="social" target="_blank" rel="noopener">
-          <span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm11 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg></span>
-          <span>Instagram</span>
+        <a class="social" href="https://instagram.com/cantorailtonsouza" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Ailton Souza">
+          <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm11 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg><span>Instagram</span>
         </a>
-        <a id="youtubeLink" class="social" target="_blank" rel="noopener">
-          <span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4L15.8 12l-6.2 3.6Z"/></svg></span>
-          <span>YouTube</span>
+        <a class="social" href="https://youtube.com/@ailtonsouza" target="_blank" rel="noopener noreferrer" aria-label="YouTube de Ailton Souza">
+          <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4L15.8 12l-6.2 3.6Z"/></svg><span>YouTube</span>
         </a>
-        <a id="spotifyLink" class="social" target="_blank" rel="noopener">
-          <span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5A10.5 10.5 0 1 0 12 22.5 10.5 10.5 0 0 0 12 1.5Zm4.8 15.1a.9.9 0 0 1-1.2.3c-3.3-2-7.4-2.5-12.2-1.4a.9.9 0 1 1-.4-1.7c5.2-1.2 9.8-.6 13.5 1.7.4.2.5.8.3 1.1Zm1.7-3a1.1 1.1 0 0 1-1.5.4c-3.8-2.3-9.5-3-13.9-1.6a1.1 1.1 0 1 1-.7-2.1c5.1-1.6 11.5-.8 15.7 1.8.5.3.7 1 .4 1.5Zm.1-3.2C14.1 7.7 6.6 7.5 2.3 8.8A1.3 1.3 0 1 1 1.5 6.3c5-1.5 13.3-1.2 18.4 1.8a1.3 1.3 0 0 1-1.3 2.3Z"/></svg></span>
-          <span>Spotify</span>
+        <a class="social" href="https://open.spotify.com/search/Ailton%20Souza" target="_blank" rel="noopener noreferrer" aria-label="Buscar Ailton Souza no Spotify">
+          <svg viewBox="0 0 24 24"><path d="M12 1.5A10.5 10.5 0 1 0 12 22.5 10.5 10.5 0 0 0 12 1.5Zm4.8 15.1a.9.9 0 0 1-1.2.3c-3.3-2-7.4-2.5-12.2-1.4a.9.9 0 1 1-.4-1.7c5.2-1.2 9.8-.6 13.5 1.7.4.2.5.8.3 1.1Zm1.7-3a1.1 1.1 0 0 1-1.5.4c-3.8-2.3-9.5-3-13.9-1.6a1.1 1.1 0 1 1-.7-2.1c5.1-1.6 11.5-.8 15.7 1.8.5.3.7 1 .4 1.5Zm.1-3.2C14.1 7.7 6.6 7.5 2.3 8.8A1.3 1.3 0 1 1 1.5 6.3c5-1.5 13.3-1.2 18.4 1.8a1.3 1.3 0 0 1-1.3 2.3Z"/></svg><span>Spotify</span>
         </a>
-        <a id="siteLink" class="social" target="_blank" rel="noopener">
-          <span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm6.9 6h-3.1a15.7 15.7 0 0 0-1.3-3.4A8.1 8.1 0 0 1 18.9 8ZM12 4c.9 1.1 1.6 2.4 2 4h-4c.4-1.6 1.1-2.9 2-4ZM9.5 4.6A15.7 15.7 0 0 0 8.2 8H5.1a8.1 8.1 0 0 1 4.4-3.4ZM4.3 10H8a16.5 16.5 0 0 0 0 4H4.3a8 8 0 0 1 0-4Zm.8 6h3.1a15.7 15.7 0 0 0 1.3 3.4A8.1 8.1 0 0 1 5.1 16Zm6.9 4c-.9-1.1-1.6-2.4-2-4h4c-.4 1.6-1.1 2.9-2 4Zm2.4-6H9.6a14.2 14.2 0 0 1 0-4h4.8a14.2 14.2 0 0 1 0 4Zm.1 5.4a15.7 15.7 0 0 0 1.3-3.4h3.1a8.1 8.1 0 0 1-4.4 3.4Zm1.5-5.4a16.5 16.5 0 0 0 0-4h3.7a8 8 0 0 1 0 4H16Z"/></svg></span>
-          <span>Site oficial</span>
+        <a class="social" href="https://cantorailtonsouza.github.io/" target="_blank" rel="noopener noreferrer" aria-label="Site oficial de Ailton Souza">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm6.9 6h-3.1a15.7 15.7 0 0 0-1.3-3.4A8.1 8.1 0 0 1 18.9 8ZM12 4c.9 1.1 1.6 2.4 2 4h-4c.4-1.6 1.1-2.9 2-4ZM9.5 4.6A15.7 15.7 0 0 0 8.2 8H5.1a8.1 8.1 0 0 1 4.4-3.4ZM4.3 10H8a16.5 16.5 0 0 0 0 4H4.3a8 8 0 0 1 0-4Zm.8 6h3.1a15.7 15.7 0 0 0 1.3 3.4A8.1 8.1 0 0 1 5.1 16Zm6.9 4c-.9-1.1-1.6-2.4-2-4h4c-.4 1.6-1.1 2.9-2 4Zm2.4-6H9.6a14.2 14.2 0 0 1 0-4h4.8a14.2 14.2 0 0 1 0 4Zm.1 5.4a15.7 15.7 0 0 0 1.3-3.4h3.1a8.1 8.1 0 0 1-4.4 3.4Zm1.5-5.4a16.5 16.5 0 0 0 0-4h3.7a8 8 0 0 1 0 4H16Z"/></svg><span>Site oficial</span>
         </a>
       </div>
     </section>
 
     <section class="card hire">
       <span class="eyebrow">CONTRATE PARA SEU EVENTO</span>
-      <h3 style="margin-top:14px">Leve o show do Ailton Souza</h3>
+      <h3 style="margin:14px 0 5px">Leve o show do Ailton Souza</h3>
       <p class="muted">Casamentos, aniversários, bares, eventos corporativos e festas particulares.</p>
-      <div id="publicPhone" class="phone"></div>
-      <a id="hireButton" class="btn gold" target="_blank">🎤 Quero este show no meu evento</a>
+      <div class="phone">(61) 9584-0847</div>
+      <a class="btn gold" href="https://wa.me/556195840847?text=Ol%C3%A1%2C%20Ailton!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20um%20evento." target="_blank" rel="noopener noreferrer">🎤 Quero este show no meu evento</a>
     </section>
 
-    <div class="footer">
-      <div>Apoiar o artista é sempre opcional.</div>
-      <div style="margin-top:8px">© Ailton Souza — Toca Ailton Souza</div>
-    </div>
-  </main>
-
-  <main id="adminPage" class="hidden">
-    <section class="hero">
-      <span class="eyebrow">PAINEL INTERNO</span>
-      <h2>Gerencie seu repertório</h2>
-      <p>Edite playlists, contatos, redes sociais e as informações exibidas ao público.</p>
-    </section>
-
-    <section class="kpis" style="margin-top:16px">
-      <div class="kpi"><span class="muted">Playlists</span><strong id="kpiPlaylists"></strong></div>
-      <div class="kpi"><span class="muted">Músicas</span><strong id="kpiSongs"></strong></div>
-      <div class="kpi"><span class="muted">Ativa</span><strong id="kpiActive"></strong></div>
-      <div class="kpi"><span class="muted">Pedidos simulados</span><strong id="kpiOrders"></strong></div>
-    </section>
-
-    <section class="grid two" style="margin-top:16px">
-      <div class="card">
-        <div class="row"><h3 style="margin:0">Playlists</h3><button class="btn gold" onclick="openModal('playlistModal')">+ Nova</button></div>
-        <div id="playlistList" class="music-list"></div>
-      </div>
-      <div class="card">
-        <h3 style="margin-top:0">Contato e Pix</h3>
-        <label>WhatsApp dos pedidos</label><input id="whatsappInput">
-        <label>Telefone exibido para contratação</label><input id="phoneInput">
-        <label>Chave Pix</label><input id="pixInput" placeholder="Informe sua chave depois">
-        <button class="btn gold" style="margin-top:14px;width:100%" onclick="saveSettings()">Salvar</button>
-      </div>
-    </section>
-
-    <section class="card">
-      <h3 style="margin-top:0">Redes sociais</h3>
-      <div class="grid two">
-        <div><label>Instagram</label><input id="instagramInput"></div>
-        <div><label>YouTube</label><input id="youtubeInput"></div>
-        <div><label>Spotify</label><input id="spotifyInput" placeholder="Cole o link do perfil"></div>
-        <div><label>Site oficial</label><input id="siteInput"></div>
-      </div>
-      <button class="btn gold" style="margin-top:14px" onclick="saveSocials()">Salvar redes sociais</button>
-    </section>
-
-    <section class="card">
-      <div class="row">
-        <div><h3 id="adminPlaylistTitle" style="margin:0"></h3><div class="muted">Cadastre as músicas disponíveis ao público.</div></div>
-        <button class="btn green" onclick="openModal('songModal')">+ Adicionar música</button>
-      </div>
-      <input id="adminSearch" class="search" placeholder="Buscar música cadastrada..." oninput="renderAdminSongs()">
-      <div id="adminSongList" class="music-list"></div>
-    </section>
-
-    <section class="card">
-      <h3 style="margin-top:0">Importar várias músicas</h3>
-      <p class="muted">Use uma linha por música: Nome da música - Artista</p>
-      <textarea id="bulkInput" placeholder="Convite de Casamento - Gian & Giovani&#10;Borboletas - Victor & Leo"></textarea>
-      <button class="btn gold" style="margin-top:12px" onclick="bulkImport()">Importar lista</button>
-    </section>
+    <footer>
+      <div>Pedir música é gratuito. Apoiar o artista é sempre opcional.</div>
+      <div style="margin-top:7px">© 2026 Ailton Souza — Toca Ailton Souza</div>
+    </footer>
   </main>
 </div>
 
-<div id="requestModal" class="modal hidden"><div class="modal-box">
-  <div class="modal-head"><h2>Pedir música</h2><button class="close" onclick="closeModal('requestModal')">×</button></div>
-  <div class="notice"><small>VOCÊ ESCOLHEU</small><h3 id="requestSong" style="margin:6px 0"></h3><div id="requestArtist" class="muted"></div></div>
-  <label>Seu nome</label><input id="requestName">
-  <label>Mesa ou local (opcional)</label><input id="requestTable" placeholder="Ex.: Mesa 8">
-  <label>Recado (opcional)</label><textarea id="requestMessage"></textarea>
-  <button class="btn green" style="width:100%;margin-top:14px" onclick="goSupport()">Confirmar pedido</button>
-</div></div>
-
-<div id="supportModal" class="modal hidden"><div class="modal-box">
-  <div class="modal-head"><h2>Apoio voluntário</h2><button class="close" onclick="closeModal('supportModal')">×</button></div>
-  <div class="notice"><strong>Seu pedido já está pronto.</strong><p style="margin-bottom:0">A contribuição é totalmente opcional. O pedido será enviado normalmente sem pagamento.</p></div>
-  <div class="support-values">
-    <button onclick="chooseSupport(5,this)">R$ 5</button><button onclick="chooseSupport(10,this)">R$ 10</button>
-    <button onclick="chooseSupport(20,this)">R$ 20</button><button onclick="chooseSupport('outro',this)">Outro</button>
+<div id="requestModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="requestTitle">
+  <div class="modal-box">
+    <div class="modal-head"><div><div class="section-kicker">SEU PEDIDO</div><h3 id="requestTitle" style="margin:5px 0 0"></h3><div id="requestArtist" class="muted"></div></div><button class="close" type="button" aria-label="Fechar" onclick="closeModal()">×</button></div>
+    <label for="nameInput">Seu nome *</label>
+    <input id="nameInput" class="field" maxlength="60" autocomplete="name" placeholder="Como podemos chamar você?">
+    <label for="tableInput">Mesa ou local <span class="muted">(opcional)</span></label>
+    <input id="tableInput" class="field" maxlength="30" placeholder="Ex.: Mesa 12">
+    <label for="messageInput">Recado ou dedicatória <span class="muted">(opcional)</span></label>
+    <textarea id="messageInput" class="field" maxlength="220" placeholder="Escreva um recado curto..."></textarea>
+    <div class="notice">O pedido é gratuito e será aberto no seu WhatsApp para você confirmar o envio.</div>
+    <div class="modal-actions">
+      <button class="btn green full" type="button" onclick="sendRequest()">Enviar pedido pelo WhatsApp</button>
+      <button class="btn full" type="button" onclick="closeModal()">Cancelar</button>
+    </div>
   </div>
-  <input id="otherSupport" class="hidden" type="number" min="1" placeholder="Digite o valor" style="margin-top:10px">
-  <button class="btn gold" style="width:100%;margin-top:14px" onclick="showPix()">Apoiar via Pix</button>
-  <button class="btn ghost" style="width:100%;margin-top:9px" onclick="sendWhatsApp(false)">Enviar sem contribuir</button>
-</div></div>
-
-<div id="pixModal" class="modal hidden"><div class="modal-box">
-  <div class="modal-head"><h2>Chave Pix</h2><button class="close" onclick="closeModal('pixModal')">×</button></div>
-  <div class="notice">Nesta primeira versão, a contribuição não é confirmada automaticamente.</div>
-  <label>Chave Pix</label>
-  <div class="row"><input id="pixDisplay" readonly><button class="btn green" onclick="copyPix()">Copiar</button></div>
-  <button class="btn gold" style="width:100%;margin-top:14px" onclick="sendWhatsApp(true)">Continuar para o WhatsApp</button>
-</div></div>
-
-<div id="playlistModal" class="modal hidden"><div class="modal-box">
-  <div class="modal-head"><h2>Nova playlist</h2><button class="close" onclick="closeModal('playlistModal')">×</button></div>
-  <label>Nome</label><input id="newPlaylistName">
-  <button class="btn gold" style="width:100%;margin-top:14px" onclick="createPlaylist()">Criar</button>
-</div></div>
-
-<div id="songModal" class="modal hidden"><div class="modal-box">
-  <div class="modal-head"><h2>Adicionar música</h2><button class="close" onclick="closeModal('songModal')">×</button></div>
-  <label>Música</label><input id="newSongTitle">
-  <label>Artista</label><input id="newSongArtist">
-  <button class="btn gold" style="width:100%;margin-top:14px" onclick="addSong()">Adicionar</button>
-</div></div>
+</div>
 
 <script>
-const defaults={
- settings:{
-  whatsapp:"556195840847",phone:"(61) 99584-0847",pix:"",
-  instagram:"https://instagram.com/cantorailtonsouza",
-  youtube:"https://youtube.com/@ailtonsouza",
-  spotify:"#",
-  site:"https://cantorailtonsouza.github.io/"
- },
- selectedPlaylistId:"barzinho",publicPlaylistId:null,orders:0,
- playlists:[
-  {id:"barzinho",name:"Ailton Souza Barzinho",active:true,songs:[
-   {id:"1",title:"Erro Gostoso",artist:"Simone Mendes"},
-   {id:"2",title:"Última Saudade",artist:"Henrique & Juliano"},
-   {id:"3",title:"Convite de Casamento",artist:"Gian & Giovani"},
-   {id:"4",title:"Borboletas",artist:"Victor & Leo"},
-   {id:"5",title:"Tentei Te Esquecer",artist:"Matogrosso & Mathias"}
-  ]},
-  {id:"modao",name:"Só Modão",active:true,songs:[
-   {id:"6",title:"Página de Amigos",artist:"Chitãozinho & Xororó"},
-   {id:"7",title:"Telefone Mudo",artist:"Trio Parada Dura"}
-  ]}
- ]
-};
-let state=JSON.parse(localStorage.getItem("tocaAiltonV2")||"null")||defaults;
-let currentRequest=null,selectedSupport=null;
-const $=id=>document.getElementById(id);
-function save(){localStorage.setItem("tocaAiltonV2",JSON.stringify(state));renderAll()}
-function normalizeState(){
- state.playlists.forEach((p,i)=>{if(typeof p.active!=="boolean")p.active=i===0});
- if(!state.selectedPlaylistId&&state.playlists[0])state.selectedPlaylistId=state.playlists[0].id;
-}
-function selectedPlaylist(){return state.playlists.find(p=>p.id===state.selectedPlaylistId)||state.playlists[0]}
-function publicPlaylist(){return state.playlists.find(p=>p.id===state.publicPlaylistId)||null}
-function showPage(page){
- $("publicPage").classList.toggle("hidden",page!=="public");$("adminPage").classList.toggle("hidden",page!=="admin");
- $("publicNav").classList.toggle("active",page==="public");$("adminNav").classList.toggle("active",page==="admin");renderAll()
-}
-function renderPublic(){
- const active=state.playlists.filter(p=>p.active);
- $("publicPlaylists").innerHTML=active.map(p=>`
-  <button class="public-playlist" onclick="openPublicPlaylist('${p.id}')">
-   <div><strong>${esc(p.name)}</strong><div class="muted">${p.songs.length} músicas disponíveis</div></div>
-   <span class="count">Abrir ›</span>
-  </button>`).join("")||'<div class="muted">Nenhuma playlist está ativa no momento.</div>';
- renderPublicSongs();
- const st=state.settings;
- [["instagramLink",st.instagram],["youtubeLink",st.youtube],["spotifyLink",st.spotify],["siteLink",st.site]].forEach(([id,url])=>$(id).href=url||"#");
- $("publicPhone").textContent=st.phone;
- $("hireButton").href=`https://wa.me/${(st.whatsapp||"").replace(/\D/g,"")}?text=${encodeURIComponent("Olá, Ailton! Estou no seu show e gostaria de solicitar um orçamento para um evento.")}`
-}
-function openPublicPlaylist(id){
- state.publicPlaylistId=id;
- $("publicPlaylistsSection").classList.add("hidden");
- $("publicSongsSection").classList.remove("hidden");
- $("publicSearch").value="";
- renderPublicSongs();
- window.scrollTo({top:0,behavior:"smooth"});
-}
-function backToPlaylists(){
- state.publicPlaylistId=null;
- $("publicSongsSection").classList.add("hidden");
- $("publicPlaylistsSection").classList.remove("hidden");
-}
-function renderPublicSongs(){
- const p=publicPlaylist();
- if(!p)return;
- const q=($("publicSearch").value||"").toLowerCase();
- $("playlistTitle").textContent=p.name;
- $("playlistCount").textContent=`${p.songs.length} músicas disponíveis`;
- const songs=p.songs.filter(s=>(s.title+" "+s.artist).toLowerCase().includes(q));
- $("publicSongs").innerHTML=songs.map(s=>`<div class="music"><div><div class="music-title">${esc(s.title)}</div><div class="music-artist">${esc(s.artist)}</div></div><button class="btn gold" onclick="openRequest('${s.id}')">Pedir música</button></div>`).join("")||'<div class="muted">Nenhuma música encontrada.</div>';
-}
-function renderPlaylists(){
- $("playlistList").innerHTML=state.playlists.map(p=>`<div class="playlist"><div><strong>${esc(p.name)}</strong><div class="muted">${p.songs.length} músicas • ${p.active?"Visível ao público":"Oculta"}</div><div class="actions"><button class="btn" onclick="selectPlaylist('${p.id}')">Abrir</button>${state.playlists.length>1?`<button class="btn red" onclick="deletePlaylist('${p.id}')">Excluir</button>`:""}</div></div><label class="switch" title="Mostrar esta playlist na página pública"><input type="checkbox" ${p.active?"checked":""} onchange="togglePlaylist('${p.id}')"><span class="slider"></span></label></div>`).join("")
-}
-function renderAdminSongs(){
- const p=selectedPlaylist(),q=($("adminSearch").value||"").toLowerCase();
- $("adminPlaylistTitle").textContent=`Músicas: ${p.name}`;
- $("adminSongList").innerHTML=p.songs.filter(s=>(s.title+" "+s.artist).toLowerCase().includes(q)).map(s=>`<div class="music"><div><div class="music-title">${esc(s.title)}</div><div class="music-artist">${esc(s.artist)}</div></div><button class="btn red" onclick="deleteSong('${s.id}')">Excluir</button></div>`).join("")||'<div class="muted">Nenhuma música cadastrada.</div>'
-}
-function renderAdmin(){
- $("kpiPlaylists").textContent=state.playlists.length;$("kpiSongs").textContent=state.playlists.reduce((a,p)=>a+p.songs.length,0);
- $("kpiActive").textContent=state.playlists.filter(p=>p.active).length+" ativas";$("kpiOrders").textContent=state.orders||0;
- const s=state.settings;
- $("whatsappInput").value=s.whatsapp||"";$("phoneInput").value=s.phone||"";$("pixInput").value=s.pix||"";
- $("instagramInput").value=s.instagram||"";$("youtubeInput").value=s.youtube||"";$("spotifyInput").value=s.spotify||"";
- $("siteInput").value=s.site||""
-}
-function renderAll(){renderPublic();renderPlaylists();renderAdminSongs();renderAdmin()}
-function openRequest(id){
- const p=publicPlaylist();const s=p.songs.find(x=>x.id===id);currentRequest={song:s,playlist:p.name};
- $("requestSong").textContent=s.title;$("requestArtist").textContent=s.artist;openModal("requestModal")
-}
-function goSupport(){
- const name=$("requestName").value.trim();if(!name)return alert("Digite seu nome.");
- currentRequest.name=name;currentRequest.table=$("requestTable").value.trim();currentRequest.message=$("requestMessage").value.trim();
- closeModal("requestModal");openModal("supportModal")
-}
-function chooseSupport(v,b){
- selectedSupport=v;document.querySelectorAll(".support-values button").forEach(x=>x.classList.remove("selected"));b.classList.add("selected");
- $("otherSupport").classList.toggle("hidden",v!=="outro")
-}
-function showPix(){
- if(!selectedSupport)return alert("Escolha um valor ou envie sem contribuir.");
- $("pixDisplay").value=state.settings.pix||"Chave Pix ainda não configurada";closeModal("supportModal");openModal("pixModal")
-}
-function sendWhatsApp(withSupport){
- const r=currentRequest;if(!r)return;
- let msg=`🎤 *PEDIDO DE MÚSICA — TOCA AILTON SOUZA*\n\n📁 *Playlist:* ${r.playlist}\n🎵 *Música:* ${r.song.title}\n🎙️ *Artista:* ${r.song.artist}\n👤 *Pedido de:* ${r.name}`;
- if(r.table)msg+=`\n🪑 *Mesa/local:* ${r.table}`;if(r.message)msg+=`\n💬 *Recado:* ${r.message}`;
- if(withSupport){const v=selectedSupport==="outro"?$("otherSupport").value:selectedSupport;msg+=`\n\n💛 *Apoio voluntário informado:* R$ ${v}`}
- msg+=`\n\n_Pedido feito pelo Toca Ailton Souza._`;state.orders=(state.orders||0)+1;save();
- window.open(`https://wa.me/${(state.settings.whatsapp||"").replace(/\D/g,"")}?text=${encodeURIComponent(msg)}`,"_blank");
- closeModal("supportModal");closeModal("pixModal")
-}
-function saveSettings(){state.settings.whatsapp=$("whatsappInput").value.trim();state.settings.phone=$("phoneInput").value.trim();state.settings.pix=$("pixInput").value.trim();save();alert("Configurações salvas.")}
-function saveSocials(){["instagram","youtube","spotify","site"].forEach(k=>state.settings[k]=$(k+"Input").value.trim());save();alert("Redes sociais salvas.")}
-function createPlaylist(){const n=$("newPlaylistName").value.trim();if(!n)return alert("Digite o nome.");const id="p"+Date.now();state.playlists.push({id,name:n,active:false,songs:[]});state.selectedPlaylistId=id;$("newPlaylistName").value="";closeModal("playlistModal");save()}
-function togglePlaylist(id){const p=state.playlists.find(x=>x.id===id);if(p)p.active=!p.active;save()}
-function selectPlaylist(id){state.selectedPlaylistId=id;save()}
-function deletePlaylist(id){if(!confirm("Excluir esta playlist?"))return;state.playlists=state.playlists.filter(p=>p.id!==id);if(state.selectedPlaylistId===id)state.selectedPlaylistId=state.playlists[0].id;save()}
-function addSong(){const t=$("newSongTitle").value.trim(),a=$("newSongArtist").value.trim();if(!t||!a)return alert("Informe música e artista.");selectedPlaylist().songs.push({id:"s"+Date.now(),title:t,artist:a});$("newSongTitle").value="";$("newSongArtist").value="";closeModal("songModal");save()}
-function deleteSong(id){selectedPlaylist().songs=selectedPlaylist().songs.filter(s=>s.id!==id);save()}
-function bulkImport(){const text=$("bulkInput").value.trim();if(!text)return;text.split(/\n+/).forEach((line,i)=>{const p=line.split(/\s+-\s+/);if(p.length>=2)selectedPlaylist().songs.push({id:"b"+Date.now()+i,title:p.shift().trim(),artist:p.join(" - ").trim()})});$("bulkInput").value="";save()}
-function copyPix(){navigator.clipboard.writeText($("pixDisplay").value);alert("Chave Pix copiada.")}
-function openModal(id){$(id).classList.remove("hidden")}
-function closeModal(id){$(id).classList.add("hidden")}
-function esc(v){return String(v).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
-normalizeState();renderAll();
+  const WHATSAPP = "556195840847";
+  const playlists = [
+    {
+      id: "barzinho",
+      name: "Ailton Souza — Moda e Resenha",
+      songs: [
+        { title: "Erro Gostoso", artist: "Simone Mendes" },
+        { title: "Última Saudade", artist: "Henrique & Juliano" },
+        { title: "Quase Todo Dia", artist: "Zé Neto & Cristiano" },
+        { title: "Te Seguro", artist: "Panda" },
+        { title: "Tubarões", artist: "Diego & Victor Hugo" },
+        { title: "Seu Astral", artist: "Jorge & Mateus" },
+        { title: "Amo Noite e Dia", artist: "Jorge & Mateus" },
+        { title: "Caso Indefinido", artist: "Cristiano Araújo" },
+        { title: "Borboletas", artist: "Victor & Leo" },
+        { title: "Amigo Apaixonado", artist: "Victor & Leo" },
+        { title: "Pode Chorar", artist: "Jorge & Mateus" },
+        { title: "Chora, Me Liga", artist: "João Bosco & Vinícius" }
+      ]
+    },
+    {
+      id: "modao",
+      name: "Só Modão",
+      songs: [
+        { title: "Convite de Casamento", artist: "Gian & Giovani" },
+        { title: "Página de Amigos", artist: "Chitãozinho & Xororó" },
+        { title: "Tentei Te Esquecer", artist: "Matogrosso & Mathias" },
+        { title: "Dois Corações e Uma História", artist: "Zezé Di Camargo & Luciano" },
+        { title: "Por Um Minuto", artist: "Bruno & Marrone" },
+        { title: "Telefone Mudo", artist: "Trio Parada Dura" },
+        { title: "Vida Vazia", artist: "Bruno & Marrone" },
+        { title: "Hoje Eu Sei", artist: "João Paulo & Daniel" },
+        { title: "Talismã", artist: "Leandro & Leonardo" },
+        { title: "Frio da Madrugada", artist: "Rionegro & Solimões" }
+      ]
+    }
+  ];
+  let selectedPlaylist = null;
+  let selectedSong = null;
+  const $ = id => document.getElementById(id);
+  const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[char]));
+
+  function renderPlaylists() {
+    $("playlistList").innerHTML = playlists.map(p => `
+      <button class="playlist" type="button" onclick="openPlaylist('${p.id}')">
+        <span class="playlist-info"><strong>${escapeHtml(p.name)}</strong><span class="muted" style="display:block;margin-top:4px">${p.songs.length} músicas disponíveis</span></span>
+        <span class="open-label">Abrir ›</span>
+      </button>`).join("");
+  }
+
+  function openPlaylist(id) {
+    selectedPlaylist = playlists.find(p => p.id === id);
+    $("playlistsSection").classList.add("hidden");
+    $("songsSection").classList.remove("hidden");
+    $("searchInput").value = "";
+    $("playlistTitle").textContent = selectedPlaylist.name;
+    $("playlistCount").textContent = `${selectedPlaylist.songs.length} músicas disponíveis`;
+    renderSongs();
+    $("songsSection").scrollIntoView({behavior:"smooth", block:"start"});
+  }
+
+  function backToPlaylists() {
+    selectedPlaylist = null;
+    $("songsSection").classList.add("hidden");
+    $("playlistsSection").classList.remove("hidden");
+    $("playlistsSection").scrollIntoView({behavior:"smooth", block:"start"});
+  }
+
+  function renderSongs() {
+    if (!selectedPlaylist) return;
+    const query = $("searchInput").value.trim().toLocaleLowerCase("pt-BR");
+    const songs = selectedPlaylist.songs.filter(song => `${song.title} ${song.artist}`.toLocaleLowerCase("pt-BR").includes(query));
+    $("songsList").innerHTML = songs.length ? songs.map((song, index) => `
+      <div class="music">
+        <div><div class="music-title">${escapeHtml(song.title)}</div><div class="music-artist">${escapeHtml(song.artist)}</div></div>
+        <button class="btn gold" type="button" onclick="openRequest(${selectedPlaylist.songs.indexOf(song)})">Pedir música</button>
+      </div>`).join("") : '<div class="muted">Nenhuma música encontrada.</div>';
+  }
+
+  function openRequest(index) {
+    selectedSong = selectedPlaylist.songs[index];
+    $("requestTitle").textContent = selectedSong.title;
+    $("requestArtist").textContent = selectedSong.artist;
+    $("nameInput").value = "";
+    $("tableInput").value = "";
+    $("messageInput").value = "";
+    $("requestModal").classList.remove("hidden");
+    setTimeout(() => $("nameInput").focus(), 80);
+  }
+
+  function closeModal() {
+    $("requestModal").classList.add("hidden");
+  }
+
+  function sendRequest() {
+    const name = $("nameInput").value.trim();
+    if (!name) {
+      alert("Digite seu nome para enviar o pedido.");
+      $("nameInput").focus();
+      return;
+    }
+    const table = $("tableInput").value.trim();
+    const dedication = $("messageInput").value.trim();
+    let message = `🎤 *PEDIDO DE MÚSICA — TOCA AILTON SOUZA*\n\n📁 *Playlist:* ${selectedPlaylist.name}\n🎵 *Música:* ${selectedSong.title}\n🎙️ *Artista:* ${selectedSong.artist}\n👤 *Pedido de:* ${name}`;
+    if (table) message += `\n🪑 *Mesa/local:* ${table}`;
+    if (dedication) message += `\n💬 *Recado:* ${dedication}`;
+    message += `\n\n_Pedido gratuito feito pelo Toca Ailton Souza._`;
+    window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(message)}`, "_blank", "noopener");
+    closeModal();
+  }
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape") closeModal();
+  });
+  $("requestModal").addEventListener("click", event => {
+    if (event.target === $("requestModal")) closeModal();
+  });
+  renderPlaylists();
 </script>
 </body>
 </html>
