@@ -23,10 +23,43 @@ function showView(name){
 document.querySelectorAll("#menu button").forEach(b=>b.onclick=()=>showView(b.dataset.view));
 $("#menuToggle").onclick=()=>document.querySelector("aside").classList.toggle("open");
 
-$("#loginForm").addEventListener("submit",async e=>{
-  e.preventDefault();$("#loginError").textContent="";
-  try{await signInWithEmailAndPassword(auth,$("#loginEmail").value.trim(),$("#loginPassword").value)}
-  catch(err){$("#loginError").textContent="E-mail ou senha incorretos."}
+$("#loginForm").addEventListener("submit", async (e) => {
+
+    e.preventDefault();
+
+    $("#loginError").textContent = "";
+
+    const email = $("#loginEmail").value.trim();
+    const senha = $("#loginPassword").value;
+
+    try {
+
+        console.log("Tentando login...");
+        console.log("Email:", email);
+
+        const credencial = await signInWithEmailAndPassword(
+            auth,
+            email,
+            senha
+        );
+
+        console.log("LOGIN REALIZADO!");
+        console.log(credencial.user);
+
+        window.location.reload();
+
+    } catch (err) {
+
+        console.error("ERRO FIREBASE");
+        console.error(err);
+
+        $("#loginError").innerHTML = `
+            <strong>${err.code}</strong><br>
+            ${err.message}
+        `;
+
+    }
+
 });
 $("#logoutBtn").onclick=()=>signOut(auth);
 
