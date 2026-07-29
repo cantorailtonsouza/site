@@ -1,24 +1,133 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#070707"><meta name="robots" content="noindex,nofollow">
-<meta name="description" content="Escolha uma playlist, encontre sua música favorita e envie seu pedido.">
-<title>Toca Ailton Souza — Peça sua música</title>
-<style>
-:root{--bg:#050505;--card:#121214;--card2:#1a1a1d;--line:rgba(255,255,255,.12);--gold:#d5af4e;--gold2:#f5dc8e;--text:#fff;--muted:#aaa9ad;--green:#21aa5b;--shadow:0 24px 70px rgba(0,0,0,.48)}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(circle at 82% 0,rgba(213,175,78,.16),transparent 25%),linear-gradient(180deg,#030303,#0b0b0c 60%,#050505);color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif}button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}.hidden{display:none!important}.app{width:min(1160px,100%);margin:auto;padding:0 14px 70px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0}.brand{display:flex;align-items:center;gap:12px}.brand img{width:58px;height:58px;object-fit:contain}.brand h1{margin:0;font-size:clamp(21px,4vw,31px);letter-spacing:-.04em}.brand small,.muted{color:var(--muted)}.badge{padding:8px 11px;border-radius:999px;color:#9de5ba;border:1px solid rgba(33,170,91,.4);background:rgba(33,170,91,.11);font-size:12px;font-weight:900}.hero{position:relative;overflow:hidden;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;min-height:500px;border:1px solid rgba(213,175,78,.38);border-radius:30px;background:radial-gradient(circle at 85% 8%,rgba(245,220,142,.2),transparent 29%),linear-gradient(135deg,#171719,#080809);box-shadow:var(--shadow)}.hero-content{z-index:2;padding:clamp(28px,6vw,58px);padding-right:8px}.eyebrow{display:inline-block;padding:7px 11px;border-radius:999px;color:var(--gold2);border:1px solid rgba(213,175,78,.45);background:rgba(213,175,78,.1);font-size:12px;font-weight:900;letter-spacing:.1em}.hero h2{margin:18px 0 12px;font-size:clamp(43px,7vw,76px);line-height:.95;letter-spacing:-.06em}.hero h2 span{color:var(--gold2)}.hero p{margin:0;max-width:600px;color:var(--muted);font-size:18px;line-height:1.55}.event{display:inline-flex;margin-top:18px;padding:10px 13px;border-radius:13px;background:rgba(255,255,255,.05);border:1px solid var(--line);font-weight:800}.hero-photo-wrap{position:relative;align-self:stretch;min-height:500px}.hero-photo-wrap:after{content:"";position:absolute;z-index:2;left:0;right:0;bottom:0;height:18%;background:linear-gradient(transparent,rgba(8,8,9,.98))}.hero-photo{position:absolute;z-index:1;right:1%;bottom:-2%;height:96%;max-width:99%;object-fit:contain;filter:drop-shadow(0 24px 34px rgba(0,0,0,.5))}.card{margin-top:18px;padding:clamp(18px,3vw,27px);border:1px solid var(--line);border-radius:24px;background:linear-gradient(145deg,var(--card2),var(--card));box-shadow:0 18px 45px rgba(0,0,0,.23)}.row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.kicker{color:var(--gold2);font-size:11px;font-weight:900;letter-spacing:.16em}.card h3{margin:7px 0 0;font-size:clamp(23px,4vw,31px)}.count{padding:7px 10px;border-radius:999px;color:#9de5ba;border:1px solid rgba(33,170,91,.35);background:rgba(33,170,91,.1);font-size:13px}.list{display:grid;gap:11px;margin-top:16px}.playlist{width:100%;display:flex;align-items:center;gap:14px;text-align:left;padding:18px;color:#fff;border:1px solid var(--line);border-radius:18px;background:linear-gradient(135deg,#1b1b1e,#111113)}.playlist:before{content:"♪";width:46px;height:46px;display:grid;place-items:center;flex:0 0 auto;border-radius:14px;color:#111;font-size:23px;font-weight:900;background:linear-gradient(135deg,#c89730,var(--gold2))}.playlist strong{display:block;font-size:18px}.playlist small{color:var(--muted)}.playlist .open{margin-left:auto;color:var(--gold2);font-weight:900}.search,.field{width:100%;padding:15px;color:#fff;outline:none;border:1px solid var(--line);border-radius:14px;background:#09090a}.search{margin-top:14px}.search:focus,.field:focus{border-color:var(--gold)}.music{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:15px;border:1px solid var(--line);border-radius:17px;background:linear-gradient(135deg,#19191c,#101012)}.music-title{font-weight:900}.music-artist{margin-top:4px;color:var(--muted);font-size:14px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:12px 16px;color:#fff;font-weight:900;border:1px solid var(--line);border-radius:13px;background:rgba(255,255,255,.05)}.btn.gold{color:#111;border:0;background:linear-gradient(135deg,#b98b28,var(--gold2))}.btn.green{border:0;background:var(--green)}.btn.full{width:100%}.socials{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin-top:16px}.social{padding:16px;text-align:center;font-weight:900;border:1px solid var(--line);border-radius:17px;background:#151517}.hire{border-color:rgba(213,175,78,.38);background:radial-gradient(circle at 90% 10%,rgba(245,220,142,.16),transparent 30%),linear-gradient(135deg,#18130a,#101011)}.phone{margin:8px 0 16px;color:var(--gold2);font-size:clamp(26px,5vw,39px);font-weight:900}footer{text-align:center;padding-top:28px;color:var(--muted);font-size:14px}.modal{position:fixed;inset:0;z-index:50;display:grid;place-items:end center;padding-top:40px;background:rgba(0,0,0,.8)}.modal-box{width:min(680px,100%);max-height:94vh;overflow:auto;padding:22px;border:1px solid var(--line);border-radius:24px 24px 0 0;background:#101011}.modal-head{display:flex;justify-content:space-between;align-items:center}.close{border:0;background:transparent;color:#fff;font-size:30px}label{display:block;margin:13px 0 7px;font-weight:900}textarea.field{min-height:90px;resize:vertical}.notice{margin:12px 0;padding:13px;border-radius:13px;color:#c9f3da;border:1px solid rgba(33,170,91,.34);background:rgba(33,170,91,.09)}.actions{display:grid;gap:10px;margin-top:16px}@media(max-width:760px){.badge{display:none}.hero{grid-template-columns:1fr}.hero-content{padding:30px 23px 3px}.hero-photo-wrap{min-height:410px}.hero-photo{right:50%;height:92%;transform:translateX(50%)}.socials{grid-template-columns:1fr 1fr}.music{align-items:flex-start;flex-direction:column}.music .btn{width:100%}}@media(max-width:420px){.hero-photo-wrap{min-height:370px}.brand img{width:50px;height:50px}}
-</style></head>
-<body><main class="app"><header class="top"><div class="brand"><img src="assets/logo-ailton-souza.png" alt="Logo Ailton Souza"><div><h1>Toca Ailton Souza</h1><small>Você escolhe. Eu canto.</small></div></div><span class="badge">PEDIDO GRATUITO</span></header>
-<section class="hero"><div class="hero-content"><span class="eyebrow">PEÇA SUA MÚSICA</span><h2>Você escolhe.<br><span>Eu canto.</span></h2><p>Escolha uma playlist, encontre sua música favorita e envie seu pedido.</p><div id="eventName" class="event hidden"></div></div><div class="hero-photo-wrap"><img class="hero-photo" src="assets/ailton-souza-destaque.png" alt="Ailton Souza"></div></section>
-<section id="playlistSection" class="card"><div class="row"><div><div class="kicker">REPERTÓRIO DISPONÍVEL</div><h3>Escolha uma playlist</h3></div><span id="totalCount" class="count"></span></div><div id="playlistList" class="list"></div></section>
-<section id="songsSection" class="card hidden"><div class="row"><div><button class="btn" onclick="backToPlaylists()">← Playlists</button><h3 id="playlistTitle"></h3></div><span id="songCount" class="count"></span></div><input id="search" class="search" type="search" placeholder="Pesquisar música ou artista..." autocomplete="off"><div id="songList" class="list"></div></section>
-<section class="card"><div class="kicker">ACOMPANHE O ARTISTA</div><h3>Redes e canais oficiais</h3><div class="socials"><a id="instagramLink" class="social" target="_blank" rel="noopener">Instagram</a><a id="youtubeLink" class="social" target="_blank" rel="noopener">YouTube</a><a id="spotifyLink" class="social" target="_blank" rel="noopener">Spotify</a><a id="siteLink" class="social" target="_blank" rel="noopener">Site oficial</a></div></section>
-<section class="card hire"><div class="kicker">CONTRATE ESTE SHOW</div><h3>Leve Ailton Souza para seu evento</h3><p class="muted">Shows para bares, casamentos, eventos corporativos e festas particulares.</p><div id="hirePhone" class="phone"></div><a id="hireLink" class="btn gold" target="_blank" rel="noopener">Falar sobre contratação</a></section>
-<section id="pixSection" class="card hidden"><div class="kicker">APOIO OPCIONAL</div><h3>Gostou da experiência?</h3><p class="muted">Pedir música é gratuito. Caso deseje, você pode apoiar o artista com qualquer valor via Pix.</p><button class="btn gold" onclick="copyPix()">Copiar chave Pix</button><div id="pixStatus" class="muted" style="margin-top:10px"></div></section>
-<footer>© 2026 Ailton Souza • Toca Ailton Souza</footer></main>
-<div id="requestModal" class="modal hidden"><div class="modal-box"><div class="modal-head"><div><div class="kicker">NOVO PEDIDO</div><h3 id="modalSong" style="margin:5px 0 0"></h3><div id="modalArtist" class="muted"></div></div><button class="close" onclick="closeModal()">×</button></div><label for="name">Seu nome *</label><input id="name" class="field" placeholder="Como podemos chamar você?"><label for="table">Mesa (opcional)</label><input id="table" class="field" placeholder="Ex.: 12"><label for="dedication">Dedicatória (opcional)</label><textarea id="dedication" class="field" placeholder="Ex.: Para minha esposa, com carinho."></textarea><div class="notice">O pedido é gratuito e será enviado pelo WhatsApp.</div><div class="actions"><button class="btn green full" onclick="sendRequest()">Enviar pedido pelo WhatsApp</button><button class="btn full" onclick="closeModal()">Cancelar</button></div></div></div>
-<script>
-const KEY='tocaAiltonData';
-const DEFAULT={eventName:'',showEvent:true,whatsapp:'556195840847',hireWhatsapp:'556195840847',pixEnabled:true,pixKey:'82fe4a23-b9d7-4517-b5b1-dfcfea64a201',instagram:'https://instagram.com/cantorailtonsouza',youtube:'https://youtube.com/@ailtonsouza',spotify:'https://open.spotify.com/search/Ailton%20Souza',site:'https://cantorailtonsouza.github.io/',playlists:[{id:'moda-resenha',name:'Ailton Souza — Moda e Resenha',active:true,songs:[{title:'Erro Gostoso',artist:'Simone Mendes'},{title:'Última Saudade',artist:'Henrique & Juliano'},{title:'Quase Todo Dia',artist:'Zé Neto & Cristiano'},{title:'Te Seguro',artist:'Panda'},{title:'Tubarões',artist:'Diego & Victor Hugo'},{title:'Apaga Apaga',artist:'Danilo & Davi'},{title:'Seu Astral',artist:'Jorge & Mateus'},{title:'Amo Noite e Dia',artist:'Jorge & Mateus'},{title:'Caso Indefinido',artist:'Cristiano Araújo'},{title:'Borboletas',artist:'Victor & Leo'}]},{id:'modao',name:'Só Modão',active:true,songs:[{title:'Convite de Casamento',artist:'Gian & Giovani'},{title:'Página de Amigos',artist:'Chitãozinho & Xororó'},{title:'Tentei Te Esquecer',artist:'Matogrosso & Mathias'},{title:'Dois Corações e Uma História',artist:'Zezé Di Camargo & Luciano'},{title:'Por Um Minuto',artist:'Bruno & Marrone'},{title:'Vida Vazia',artist:'Bruno & Marrone'},{title:'Nova York',artist:'Chrystian & Ralf'},{title:'Som e Imagem',artist:'Guilherme & Santiago'},{title:'Hoje Eu Sei',artist:'João Paulo & Daniel'},{title:'Frio da Madrugada',artist:'Rionegro & Solimões'}]},{id:'autorais',name:'Músicas de Ailton Souza',active:true,songs:[{title:'Quando Chega ao Fim',artist:'Ailton Souza'},{title:'Desconhecida',artist:'Ailton Souza'},{title:'Solidão',artist:'Ailton Souza'},{title:'Véio Milionário',artist:'Ailton Souza'},{title:'Saudade Maquiada',artist:'Ailton Souza'},{title:'Stalkeando',artist:'Ailton Souza'}]}]};
-let data=load(),current=null,selected=null;function clone(x){return JSON.parse(JSON.stringify(x))}function load(){try{const x=JSON.parse(localStorage.getItem(KEY));return x&&Array.isArray(x.playlists)?x:clone(DEFAULT)}catch(e){return clone(DEFAULT)}}function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}function boot(){const active=data.playlists.filter(p=>p.active!==false);document.getElementById('playlistList').innerHTML=active.map(p=>`<button class="playlist" onclick="openPlaylist('${p.id}')"><span><strong>${esc(p.name)}</strong><small>${p.songs.length} músicas</small></span><span class="open">Abrir →</span></button>`).join('')||'<p class="muted">Nenhuma playlist disponível neste momento.</p>';document.getElementById('totalCount').textContent=`${active.reduce((n,p)=>n+p.songs.length,0)} músicas`;if(data.showEvent&&data.eventName){eventName.textContent=data.eventName;eventName.classList.remove('hidden')}instagramLink.href=data.instagram;youtubeLink.href=data.youtube;spotifyLink.href=data.spotify;siteLink.href=data.site;hirePhone.textContent=formatPhone(data.hireWhatsapp);hireLink.href=`https://wa.me/${digits(data.hireWhatsapp)}?text=${encodeURIComponent('Olá, Ailton! Gostaria de informações para contratar seu show.')}`;if(data.pixEnabled&&data.pixKey)pixSection.classList.remove('hidden')}function digits(s){return String(s||'').replace(/\D/g,'')}function formatPhone(s){const d=digits(s);return d.length===13?`+${d.slice(0,2)} ${d.slice(2,4)} ${d.slice(4,9)}-${d.slice(9)}`:s}function openPlaylist(id){current=data.playlists.find(p=>p.id===id);if(!current)return;playlistSection.classList.add('hidden');songsSection.classList.remove('hidden');playlistTitle.textContent=current.name;search.value='';renderSongs();songsSection.scrollIntoView({behavior:'smooth'})}function backToPlaylists(){songsSection.classList.add('hidden');playlistSection.classList.remove('hidden');playlistSection.scrollIntoView({behavior:'smooth'})}function renderSongs(){const q=search.value.toLowerCase().trim();const songs=current.songs.filter(s=>(s.title+' '+s.artist).toLowerCase().includes(q)).sort((a,b)=>a.title.localeCompare(b.title,'pt-BR'));songCount.textContent=`${songs.length} músicas`;songList.innerHTML=songs.map((s,i)=>`<div class="music"><div><div class="music-title">${esc(s.title)}</div><div class="music-artist">${esc(s.artist)}</div></div><button class="btn gold" onclick='openRequest(${JSON.stringify(JSON.stringify(s))})'>Pedir música</button></div>`).join('')||'<p class="muted">Nenhuma música encontrada.</p>'}search.addEventListener('input',renderSongs);function openRequest(raw){selected=JSON.parse(raw);modalSong.textContent=selected.title;modalArtist.textContent=selected.artist;requestModal.classList.remove('hidden');setTimeout(()=>name.focus(),100)}function closeModal(){requestModal.classList.add('hidden')}function sendRequest(){const n=name.value.trim();if(!n){alert('Digite seu nome para enviar o pedido.');name.focus();return}let msg=`🎵 *Novo pedido — Toca Ailton Souza*\n\n`;if(data.eventName)msg+=`📍 *Local/Evento:* ${data.eventName}\n`;msg+=`🎶 *Música:* ${selected.title}\n🎤 *Artista:* ${selected.artist}\n👤 *Nome:* ${n}\n`;if(table.value.trim())msg+=`🪑 *Mesa:* ${table.value.trim()}\n`;if(dedication.value.trim())msg+=`💬 *Dedicatória:* ${dedication.value.trim()}\n`;window.open(`https://wa.me/${digits(data.whatsapp)}?text=${encodeURIComponent(msg)}`,'_blank');closeModal();name.value='';table.value='';dedication.value=''}async function copyPix(){try{await navigator.clipboard.writeText(data.pixKey);pixStatus.textContent='Chave Pix copiada!'}catch(e){pixStatus.textContent='Chave Pix: '+data.pixKey}}boot();
-</script></body></html>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#080808">
+  <meta name="description" content="Peça sua música no show de Ailton Souza.">
+  <title>Toca Ailton Souza</title>
+  <link rel="icon" href="./assets/logo-ailton-souza.png">
+  <link rel="stylesheet" href="./css/public.css">
+</head>
+<body>
+  <header class="hero">
+    <nav class="nav wrap">
+      <img class="brand-logo" src="./assets/logo-ailton-souza.png" alt="Ailton Souza">
+      <a class="nav-link" href="#contrate">Contrate este show</a>
+    </nav>
+
+    <div class="hero-grid wrap">
+      <div class="hero-copy">
+        <span class="eyebrow" id="eventBadge">AO VIVO</span>
+        <h1>Você escolhe.<br><span>Eu canto.</span></h1>
+        <p id="introText">Escolha uma playlist, encontre sua música favorita e envie seu pedido.</p>
+        <a href="#playlists" class="primary">Peça sua música</a>
+      </div>
+      <div class="hero-photo">
+        <img src="./assets/ailton-souza-destaque.png" alt="Cantor Ailton Souza">
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="status wrap" id="nowPlayingBox" hidden>
+      <div>
+        <span class="pulse"></span>
+        <small>TOCANDO AGORA</small>
+        <strong id="nowPlayingTitle">—</strong>
+      </div>
+    </section>
+
+    <section class="section wrap" id="playlists">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">REPERTÓRIO</span>
+          <h2>Escolha uma playlist</h2>
+        </div>
+        <button class="ghost" id="surpriseBtn" type="button">🎲 Música surpresa</button>
+      </div>
+      <div class="playlist-grid" id="playlistGrid">
+        <p class="muted">Carregando playlists...</p>
+      </div>
+    </section>
+
+    <section class="section wrap" id="songsSection" hidden>
+      <button class="back" id="backBtn" type="button">← Voltar às playlists</button>
+      <div class="section-head songs-head">
+        <div>
+          <span class="eyebrow" id="playlistKicker">PLAYLIST</span>
+          <h2 id="playlistTitle">Músicas</h2>
+        </div>
+        <label class="search">
+          <span>⌕</span>
+          <input id="songSearch" type="search" placeholder="Buscar música ou artista">
+        </label>
+      </div>
+      <div id="songList" class="song-list"></div>
+    </section>
+
+    <section class="section wrap" id="topSection">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">DESTAQUES</span>
+          <h2>Mais pedidas</h2>
+        </div>
+      </div>
+      <div id="topSongs" class="ranking"></div>
+    </section>
+
+    <section class="support">
+      <div class="wrap support-grid">
+        <div>
+          <span class="eyebrow">APOIO OPCIONAL</span>
+          <h2>Gostou da experiência?</h2>
+          <p>Pedir música é gratuito. Caso deseje apoiar o artista, você pode contribuir com qualquer valor via Pix.</p>
+        </div>
+        <button class="secondary" id="pixBtn" type="button">Copiar chave Pix</button>
+      </div>
+    </section>
+
+    <section class="hire wrap" id="contrate">
+      <span class="eyebrow">EVENTOS</span>
+      <h2>Leve este show para o seu evento</h2>
+      <p>Casamentos, aniversários, empresas, bares e festas particulares.</p>
+      <a id="hireBtn" class="primary" target="_blank" rel="noopener">Solicitar orçamento</a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-grid">
+      <img src="./assets/logo-ailton-souza.png" alt="Ailton Souza">
+      <div class="socials">
+        <a id="instagramLink" target="_blank" rel="noopener">Instagram</a>
+        <a id="youtubeLink" target="_blank" rel="noopener">YouTube</a>
+        <a id="spotifyLink" target="_blank" rel="noopener">Spotify</a>
+        <a id="siteLink" target="_blank" rel="noopener">Site oficial</a>
+      </div>
+    </div>
+  </footer>
+
+  <dialog id="requestDialog">
+    <form method="dialog" id="requestForm">
+      <button class="close" value="cancel" aria-label="Fechar">×</button>
+      <span class="eyebrow">NOVO PEDIDO</span>
+      <h2 id="selectedSong">Música</h2>
+      <p id="selectedArtist" class="muted"></p>
+      <label>Seu nome *
+        <input id="customerName" required maxlength="60">
+      </label>
+      <label>Mesa (opcional)
+        <input id="customerTable" maxlength="20">
+      </label>
+      <label>Dedicatória (opcional)
+        <textarea id="dedication" maxlength="220" rows="3"></textarea>
+      </label>
+      <button class="primary full" id="sendRequestBtn" type="submit">Enviar pedido pelo WhatsApp</button>
+      <p class="fine">O pedido de música é gratuito.</p>
+    </form>
+  </dialog>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="./js/public.js"></script>
+</body>
+</html>
