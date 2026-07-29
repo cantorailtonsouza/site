@@ -278,43 +278,55 @@
 </div>
 
 <script>
-  const WHATSAPP = "556195840847";
-  const playlists = [
-    {
-      id: "barzinho",
-      name: "Ailton Souza — Moda e Resenha",
-      songs: [
-        { title: "Erro Gostoso", artist: "Simone Mendes" },
-        { title: "Última Saudade", artist: "Henrique & Juliano" },
-        { title: "Quase Todo Dia", artist: "Zé Neto & Cristiano" },
-        { title: "Te Seguro", artist: "Panda" },
-        { title: "Tubarões", artist: "Diego & Victor Hugo" },
-        { title: "Seu Astral", artist: "Jorge & Mateus" },
-        { title: "Amo Noite e Dia", artist: "Jorge & Mateus" },
-        { title: "Caso Indefinido", artist: "Cristiano Araújo" },
-        { title: "Borboletas", artist: "Victor & Leo" },
-        { title: "Amigo Apaixonado", artist: "Victor & Leo" },
-        { title: "Pode Chorar", artist: "Jorge & Mateus" },
-        { title: "Chora, Me Liga", artist: "João Bosco & Vinícius" }
-      ]
-    },
-    {
-      id: "modao",
-      name: "Só Modão",
-      songs: [
-        { title: "Convite de Casamento", artist: "Gian & Giovani" },
-        { title: "Página de Amigos", artist: "Chitãozinho & Xororó" },
-        { title: "Tentei Te Esquecer", artist: "Matogrosso & Mathias" },
-        { title: "Dois Corações e Uma História", artist: "Zezé Di Camargo & Luciano" },
-        { title: "Por Um Minuto", artist: "Bruno & Marrone" },
-        { title: "Telefone Mudo", artist: "Trio Parada Dura" },
-        { title: "Vida Vazia", artist: "Bruno & Marrone" },
-        { title: "Hoje Eu Sei", artist: "João Paulo & Daniel" },
-        { title: "Talismã", artist: "Leandro & Leonardo" },
-        { title: "Frio da Madrugada", artist: "Rionegro & Solimões" }
-      ]
-    }
-  ];
+  const STORAGE_KEY = "tocaAiltonData";
+  const defaultData = {
+    whatsapp: "556195840847",
+    pixKey: "",
+    pixLabel: "Apoie o artista (opcional)",
+    playlists: [
+      {
+        id: "barzinho", name: "Ailton Souza — Moda e Resenha", active: true,
+        songs: [
+          { title: "Erro Gostoso", artist: "Simone Mendes" },
+          { title: "Última Saudade", artist: "Henrique & Juliano" },
+          { title: "Quase Todo Dia", artist: "Zé Neto & Cristiano" },
+          { title: "Te Seguro", artist: "Panda" },
+          { title: "Tubarões", artist: "Diego & Victor Hugo" },
+          { title: "Seu Astral", artist: "Jorge & Mateus" },
+          { title: "Amo Noite e Dia", artist: "Jorge & Mateus" },
+          { title: "Caso Indefinido", artist: "Cristiano Araújo" },
+          { title: "Borboletas", artist: "Victor & Leo" },
+          { title: "Amigo Apaixonado", artist: "Victor & Leo" },
+          { title: "Pode Chorar", artist: "Jorge & Mateus" },
+          { title: "Chora, Me Liga", artist: "João Bosco & Vinícius" }
+        ]
+      },
+      {
+        id: "modao", name: "Só Modão", active: true,
+        songs: [
+          { title: "Convite de Casamento", artist: "Gian & Giovani" },
+          { title: "Página de Amigos", artist: "Chitãozinho & Xororó" },
+          { title: "Tentei Te Esquecer", artist: "Matogrosso & Mathias" },
+          { title: "Dois Corações e Uma História", artist: "Zezé Di Camargo & Luciano" },
+          { title: "Por Um Minuto", artist: "Bruno & Marrone" },
+          { title: "Telefone Mudo", artist: "Trio Parada Dura" },
+          { title: "Vida Vazia", artist: "Bruno & Marrone" },
+          { title: "Hoje Eu Sei", artist: "João Paulo & Daniel" },
+          { title: "Talismã", artist: "Leandro & Leonardo" },
+          { title: "Frio da Madrugada", artist: "Rionegro & Solimões" }
+        ]
+      }
+    ]
+  };
+  function loadData() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+      return saved && Array.isArray(saved.playlists) ? saved : defaultData;
+    } catch (error) { return defaultData; }
+  }
+  const appData = loadData();
+  const WHATSAPP = String(appData.whatsapp || defaultData.whatsapp).replace(/\D/g, "");
+  const playlists = appData.playlists.filter(p => p.active !== false);
   let selectedPlaylist = null;
   let selectedSong = null;
   const $ = id => document.getElementById(id);

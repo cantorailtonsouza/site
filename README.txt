@@ -1,18 +1,12 @@
-TOCA AILTON SOUZA — VERSÃO 5 PREMIUM
+TOCA AILTON SOUZA — V7 COM PAINEL INTERNO DE TESTES
 
-NOVIDADES:
-- Foto original de Ailton Souza inserida no destaque principal.
-- Hero principal redesenhado com aparência premium.
-- Frase principal: “Você escolhe. Eu canto.”
-- Botão de acesso rápido às playlists.
-- Destaques: pedido gratuito, WhatsApp e apoio opcional.
-- Playlists com cartões mais sofisticados e ícone musical dourado.
-- Lista de músicas com acabamento mais elegante.
-- Redes mantidas: Instagram, YouTube, Spotify e Site Oficial.
-- Logo original preservada.
-- Layout responsivo para celular e computador.
+Arquivos:
+- index.html: página pública
+- admin/index.html: painel interno
+- assets/: imagens
 
-COMO TESTAR:
-1. Extraia o ZIP.
-2. Abra index.html no navegador.
-3. Confira a Página pública e o Painel do cantor.
+Painel:
+https://cantorailtonsouza.github.io/site/admin/
+PIN inicial: 2026
+
+ATENÇÃO: esta versão usa localStorage. As alterações feitas no painel só aparecem no mesmo navegador/aparelho. Para uso real com o público, será necessário conectar Firebase ou outro banco de dados.
